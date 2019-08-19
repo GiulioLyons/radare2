@@ -716,6 +716,7 @@ static bool cb_asmbits(void *user, void *data) {
 		int v = r_anal_archinfo (core->anal, R_ANAL_ARCHINFO_ALIGN);
 		r_config_set_i (core->config, "asm.pcalign", (v != -1)? v: 0);
 	}
+	r_core_anal_cc_init (core);
 	return ret;
 }
 
@@ -729,7 +730,9 @@ static void update_asmfeatures_options(RCore *core, RConfigNode *node) {
 			for (i = 0; i < argc; i++) {
 				node->options->free = free;
 				const char *feature = r_str_word_get0 (features, i);
-				r_list_append (node->options, strdup (feature));
+				if (feature) {
+					r_list_append (node->options, strdup (feature));
+				}
 			}
 			free (features);
 		}

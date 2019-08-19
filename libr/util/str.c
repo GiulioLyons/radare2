@@ -839,18 +839,6 @@ R_API char *r_str_dup(char *ptr, const char *string) {
 	return r_str_new (string);
 }
 
-R_API void r_str_writef(int fd, const char *fmt, ...) {
-	char *buf;
-	va_list ap;
-	va_start (ap, fmt);
-	if ((buf = malloc (4096)) != NULL) {
-		vsnprintf (buf, 4096, fmt, ap);
-		r_str_write (fd, buf);
-		free (buf);
-	}
-	va_end (ap);
-}
-
 R_API char *r_str_prepend(char *ptr, const char *string) {
 	int slen, plen;
 	if (!ptr) {

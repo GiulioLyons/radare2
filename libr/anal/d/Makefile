@@ -23,6 +23,7 @@ F+= cc-m68k-32
 F+= cc-sparc-32
 F+= cc-arm-64
 F+= cc-arm-32
+F+= cc-arm-16
 F+= cc-avr-8
 F+= cc-powerpc-32
 F+= cc-powerpc-64

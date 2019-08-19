@@ -551,10 +551,6 @@ R_API void r_core_anal_cc_init(RCore *core) {
 	const char *anal_arch = r_config_get (core->config, "anal.arch");
 
 	int bits = core->anal->bits;
-	if (bits == 16 && !strcmp (anal_arch, "arm")) {
-		bits = 32;
-	}
-
 	char *dbpath = sdb_fmt ("%s/"R2_SDB_FCNSIGN"/cc-%s-%d.sdb", dir_prefix, anal_arch, bits);
 	if (r_file_exists (dbpath)) {
 		sdb_concat_by_path (core->anal->sdb_cc, dbpath);
